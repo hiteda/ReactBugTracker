@@ -1,4 +1,5 @@
 ﻿import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchReports } from '../../actions';
 
@@ -11,7 +12,7 @@ class ReportsList extends Component {
     return this.props.reports.map(report => {
       return (<div className="card" key={report.summary}>
         <div className="card-body">
-          <h4 className="card-title">{report.summary}</h4>
+          <Link to={`/reports/${report.id}`}><h4 className="card-title">{report.summary}</h4></Link>
           <div className="card-text">{report.details}</div>
         </div>
       </div>);
