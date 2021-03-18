@@ -8,6 +8,5 @@ export const fetchReports = () => async dispatch => {
 
 export const fetchReport = (id) => async dispatch => {
   const res = await axios.get('/api/reports/' + id);
-  console.log(res);
   dispatch({ type: FETCH_REPORT, payload: res.data });
 };

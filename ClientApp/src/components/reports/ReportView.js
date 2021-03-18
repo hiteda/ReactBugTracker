@@ -6,7 +6,6 @@ class ReportView extends Component {
   constructor(props) {
     super(props);
     this.id = props.match.params.id;
-    this.state = { loaded: false, report: {} };
   }
 
   componentDidMount() {

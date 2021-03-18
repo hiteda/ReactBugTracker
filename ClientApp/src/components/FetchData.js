@@ -28,7 +28,6 @@ class FetchData extends Component {
       "howFound": "SNOOOOoze!",
       "severity": 2
     });
-    console.log(response);
     this.props.fetchReports();
   }
 }
