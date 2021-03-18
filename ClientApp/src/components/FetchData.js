@@ -1,53 +1,21 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { fetchReports } from '../actions';
+import ReportsList from './reports/ReportsList';
 
-export class FetchData extends Component {
-  static displayName = FetchData.name;
+class FetchData extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { forecasts: [], loading: true };
-  }
-
-  componentDidMount() {
-    this.populateWeatherData();
-  }
-
-  static renderForecastsTable(forecasts) {
-    return (
-      <table className='table table-striped' aria-labelledby="tabelLabel">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
-          </tr>
-        </thead>
-        <tbody>
-          {forecasts.map(forecast =>
-            <tr key={forecast.date}>
-              <td>{forecast.date}</td>
-              <td>{forecast.temperatureC}</td>
-              <td>{forecast.temperatureF}</td>
-              <td>{forecast.summary}</td>
-            </tr>
-          )}
-        </tbody>
-      </table>
-    );
+    this.handleUserClick = this.handleUserClick.bind(this);
   }
 
   render() {
-    let contents = this.state.loading
-      ? <p><em>Loading...</em></p>
-      : FetchData.renderForecastsTable(this.state.forecasts);
-
     return (
       <div>
-        <h1 id="tabelLabel" >Weather forecast</h1>
-        <p>This component demonstrates fetching data from the server.</p>
-        {contents}
+        <h3>Bug Reports</h3>
+        <ReportsList />
         <button type="button" className="btn btn-primary" onClick={this.handleUserClick}>Add a User</button>
       </div>
     );
@@ -55,18 +23,18 @@ export class FetchData extends Component {
 
   async handleUserClick() {
     const response = await axios.post('/api/reports', {
-      "id": 1,
-      "summary": "Feieieio",
-      "details": "Yeah, sew beerken",
+      "summary": "Lalala",
+      "details": "Wawawawa",
       "howFound": "SNOOOOoze!",
       "severity": 2
     });
     console.log(response);
-  }
-
-  async populateWeatherData() {
-    const response = await fetch('weatherforecast');
-    const data = await response.json();
-    this.setState({ forecasts: data, loading: false });
+    this.props.fetchReports();
   }
 }
+
+function mapStateToProps({ reports }) {
+  return { reports };
+}
+
+export default connect(mapStateToProps, { fetchReports })(FetchData);

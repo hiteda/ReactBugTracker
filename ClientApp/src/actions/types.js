@@ -1,0 +1,1 @@
+﻿export const FETCH_REPORTS = 'fetch_reports';
