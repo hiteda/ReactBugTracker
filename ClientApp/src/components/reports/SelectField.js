@@ -7,14 +7,13 @@ const renderOptions = (options) => {
   });
 }
 
-export default ({ input, options, label, meta: { error, touched } }) => {
+export default ({ input, options, label }) => {
   return (
     <div className="form-group">
       <label style={{ display: 'block' }}>{label}</label>
       <select {...input}>
         {renderOptions(options)}
       </select>
-      <small>{ touched && error }</small>
     </div>
   );
 }

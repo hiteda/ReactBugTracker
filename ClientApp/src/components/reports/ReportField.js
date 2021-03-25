@@ -3,7 +3,7 @@ import SelectField from './SelectField';
 
 export default ({ input, label, options, meta: { error, touched } }) => {
   if (options) {
-    return <SelectField options={options} label={label} meta={{ error, touched }} input={input} />;
+    return <SelectField options={options} label={label} input={input} />;
   }
   return (
     <div className="form-group">

@@ -15,7 +15,7 @@ class ReportNew extends Component {
     }
 
     return (
-      <ReportForm onReportSubmit={() => { console.log("hi"); this.setState({ showReview: true });}} />
+      <ReportForm onReportSubmit={() => this.setState({ showReview: true })} />
     );
   }
 }
