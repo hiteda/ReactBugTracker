@@ -1,6 +1,7 @@
 ﻿import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 import ReportForm from './ReportForm';
+import ReportFormReview from './ReportFormReview'
 
 class ReportNew extends Component {
   state = {
@@ -10,7 +11,7 @@ class ReportNew extends Component {
   render() {
     if (this.state.showReview) {
       return (
-        <div>Showing review</div>
+        <ReportFormReview onCancel={() => this.setState({ showReview: false })} />
       );
     }
 

@@ -2,15 +2,28 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { Link } from 'react-router-dom';
-import ReportField from './ReportField';
+import TextField from './fields/TextField';
+import TextareaField from './fields/TextareaField';
+import SelectField from './fields/SelectField';
 import formFields from './formFields';
 
 class ReportForm extends Component {
+  getComponent(type) {
+    switch (type) {
+      case "select":
+        return SelectField;
+      case "textarea":
+        return TextareaField;
+      default:
+        return TextField;
+    }
+  }
+
   renderFields() {
     return _.map(formFields, ({ label, name, type, options }) => {
       return <Field
         key={name}
-        component={ReportField}
+        component={this.getComponent(type)}
         type={type}
         label={label}
         options={options}

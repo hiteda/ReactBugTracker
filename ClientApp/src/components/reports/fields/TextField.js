@@ -1,10 +1,6 @@
 ﻿import React from 'react';
-import SelectField from './SelectField';
 
-export default ({ input, label, options, meta: { error, touched } }) => {
-  if (options) {
-    return <SelectField options={options} label={label} input={input} />;
-  }
+export default ({ input, label, meta: { error, touched } }) => {
   return (
     <div className="form-group">
       <label style={{display: 'block'}}>{label}</label>

@@ -11,8 +11,7 @@ namespace BugTrackerReact.Models
         public string Summary { get; set; }
         public string Details { get; set; }
         public string HowFound { get; set; }
-        [Range(1, 5, ErrorMessage = "Severity must be between 1 and 5")]
-        public int Severity { get; set; }
+        public string Severity { get; set; }
         //public long CreatedBy { get; set; }
         //public long AssignedTo { get; set; }
         public DateTime DateCreated { get; }
