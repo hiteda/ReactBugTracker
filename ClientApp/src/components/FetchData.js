@@ -8,27 +8,19 @@ class FetchData extends Component {
 
   constructor(props) {
     super(props);
-    this.handleUserClick = this.handleUserClick.bind(this);
+    this.props.fetchReports();
   }
 
   render() {
-    return (
-      <div>
-        <h3>Bug Reports</h3>
-        <ReportsList />
-        <button type="button" className="btn btn-primary" onClick={this.handleUserClick}>Add a User</button>
-      </div>
-    );
-  }
-
-  async handleUserClick() {
-    const response = await axios.post('/api/reports', {
-      "summary": "Lalala",
-      "details": "Wawawawa",
-      "howFound": "SNOOOOoze!",
-      "severity": 2
-    });
-    this.props.fetchReports();
+    if (this.props.reports && this.props.reports.length > 0) {
+      return (
+        <div>
+          <h3>Bug Reports</h3>
+          <ReportsList />
+        </div>
+      );
+    }
+    return <h4>There are no reports to show.</h4>;
   }
 }
 

@@ -13,7 +13,7 @@ class ReportsList extends Component {
       return (<div className="card" key={report.summary}>
         <div className="card-body">
           <Link to={`/reports/${report.id}`}><h4 className="card-title">{report.summary}</h4></Link>
-          <div className="card-text">{report.details}</div>
+          <div className="card-text">Severity: {report.severity}</div>
         </div>
       </div>);
     });

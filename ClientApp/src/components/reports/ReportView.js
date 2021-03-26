@@ -16,7 +16,8 @@ class ReportView extends Component {
     if (this.props.report) {
       return (
         <div>
-          <p>{this.props.report.summary}</p>
+          <h6>{this.props.report.summary}</h6>
+          <p>{this.props.report.details}</p>
         </div>
       );
     }
@@ -26,7 +27,6 @@ class ReportView extends Component {
   render() {
     return (
       <div>
-        <h1>My ID is {this.id}</h1>
         {this.renderReport()}
       </div>
     );

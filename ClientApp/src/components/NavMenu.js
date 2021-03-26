@@ -37,7 +37,7 @@ export class NavMenu extends Component {
                   <NavLink tag={Link} to="/new/report">New Bug Report</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={Link} to="/fetch-data">Fetch data</NavLink>
+                  <NavLink tag={Link} to="/fetch-data">View Reports</NavLink>
                 </NavItem>
               </ul>
             </Collapse>
