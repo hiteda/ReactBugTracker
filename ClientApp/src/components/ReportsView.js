@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import { fetchReports } from '../actions';
 import ReportsList from './reports/ReportsList';
 
-class FetchData extends Component {
+class ReportsView extends Component {
 
   constructor(props) {
     super(props);
@@ -28,4 +27,4 @@ function mapStateToProps({ reports }) {
   return { reports };
 }
 
-export default connect(mapStateToProps, { fetchReports })(FetchData);
+export default connect(mapStateToProps, { fetchReports })(ReportsView);

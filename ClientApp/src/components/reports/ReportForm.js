@@ -8,6 +8,14 @@ import SelectField from './fields/SelectField';
 import formFields from './formFields';
 
 class ReportForm extends Component {
+  constructor(props) {
+    super(props);
+    // If report values were passed in, initialize to those values
+    if (props.reportValues) {
+      this.props.initialize(props.reportValues);
+    }
+  }
+
   getComponent(type) {
     switch (type) {
       case "select":
@@ -38,7 +46,7 @@ class ReportForm extends Component {
         <form onSubmit={this.props.handleSubmit(this.props.onReportSubmit)}>
           {this.renderFields()}
           <Link to="/reports" className="btn btn-danger">Cancel</Link>
-          <button type="submit" className="btn btn-primary float-right">Submit</button>
+          <button type="submit" className="btn btn-primary" style={{ 'marginLeft': '20px' }}>Submit</button>
         </form>
       </div>
     );

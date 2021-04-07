@@ -5,13 +5,13 @@ import { withRouter } from 'react-router-dom';
 import formFields from './formFields';
 import * as actions from '../../actions';
 
-const ReportReview = ({ onCancel, formValues, submitReport, history }) => {
+const ReportReview = ({ onCancel, formValues, submitReport, history, id }) => {
   const reviewFields = _.map(formFields, ({ label, name }) => {
     return (
       <li className="list-group-item" key={name}>
         <h6>{label}</h6>
         <div>{formValues[name]}</div>
-      </li>  
+      </li>
     );
   });
 
@@ -25,7 +25,7 @@ const ReportReview = ({ onCancel, formValues, submitReport, history }) => {
       </div>
       <div style={{ marginTop: "20px" }} >
         <button className="btn btn-danger" onClick={onCancel} >Edit</button>
-        <button className="btn btn-primary float-right" onClick={() => submitReport(formValues, history)} >Submit</button>
+        <button className="btn btn-primary" style={{ marginLeft: "20px" }} onClick={() => submitReport(formValues, history, id)} >Submit</button>
       </div>
     </div>  
   );

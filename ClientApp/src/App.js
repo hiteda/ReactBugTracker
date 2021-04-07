@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router';
 import { Layout } from './components/Layout';
-import { Home } from './components/Home';
-import FetchData from './components/FetchData';
-import { Counter } from './components/Counter';
-import ReportsList from './components/reports/ReportsList';
+import Landing from './components/Landing';
+import ReportsView from './components/ReportsView';
 import ReportView from './components/reports/ReportView';
 import ReportNew from './components/reports/ReportNew';
+import ReportEdit from './components/reports/ReportEdit';
 
 import './custom.css'
 
@@ -16,12 +15,11 @@ export default class App extends Component {
   render () {
     return (
       <Layout>
-        <Route exact path='/' component={Home} />
-        <Route path='/counter' component={Counter} />
-        <Route path='/fetch-data' component={FetchData} />
-        <Route exact path='/reports' component={ReportsList} />
-        <Route exact path='/reports/:id' component={ReportView} />
-        <Route path='/new/report' component={ReportNew} />
+        <Route exact path='/' component={Landing} />
+        <Route exact path='/reports' component={ReportsView} />
+        <Route exact path='/report/:id' component={ReportView} />
+        <Route path='/report/edit/:id' component={ReportEdit} />
+        <Route path='/reports/new' component={ReportNew} />
       </Layout>
     );
   }

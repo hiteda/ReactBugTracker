@@ -11,9 +11,15 @@ export const fetchReport = (id) => async dispatch => {
   dispatch({ type: FETCH_REPORT, payload: res.data });
 };
 
-export const submitReport = (values, history) => async dispatch => {
-  const res = await axios.post('/api/reports', values);
-  history.push('/fetch-data');
-  // This might come back to bite you
+export const submitReport = (values, history, id) => async dispatch => {
+  let res = {};
+  if (id > 0) {
+    res = await axios.put('/api/reports/' + id, values);
+    history.push('/report/' + id);
+  }
+  else {
+    res = await axios.post('/api/reports', values);
+    history.push('/reports');
+  }
   dispatch({ type: FETCH_REPORT, payload: res.data });
 };

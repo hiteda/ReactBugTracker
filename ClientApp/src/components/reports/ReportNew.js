@@ -11,7 +11,7 @@ class ReportNew extends Component {
   render() {
     if (this.state.showReview) {
       return (
-        <ReportFormReview onCancel={() => this.setState({ showReview: false })} />
+        <ReportFormReview onCancel={() => this.setState({ showReview: false })} id='-1' />
       );
     }
 
