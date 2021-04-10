@@ -1,9 +1,14 @@
 ﻿import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchReport } from '../../actions';
+import { fetchReport, deleteReport } from '../../actions';
+import Modal from 'react-bootstrap/Modal'
 
 class ReportView extends Component {
+  state = {
+    showAlert: false
+  };
+
   constructor(props) {
     super(props);
     this.id = props.match.params.id;
@@ -51,7 +56,22 @@ class ReportView extends Component {
             style={{ marginLeft: '20px' }}>
             Edit
           </Link>
+          <button className="btn btn-danger float-right" onClick={() => this.setState({ showAlert: true })} >Delete</button>
         </div>
+        <Modal show={this.state.showAlert}>
+          <Modal.Body>Are you sure you want to delete this report?</Modal.Body>
+          <Modal.Footer>
+            <button className="btn btn-primary"
+              onClick={() => this.props.deleteReport(this.props.history, this.id)} >
+              Yes
+            </button>
+            <button className="btn btn-primary"
+              style={{ marginLeft: "10px" }}
+              onClick={() => this.setState({ showAlert: false })} >
+              No
+            </button>
+          </Modal.Footer>
+        </Modal>
       </div>
     );
   }
@@ -61,4 +81,4 @@ function mapStateToProps({ report }) {
   return { report };
 }
 
-export default connect(mapStateToProps, { fetchReport })(ReportView);
+export default connect(mapStateToProps, { fetchReport, deleteReport })(ReportView);

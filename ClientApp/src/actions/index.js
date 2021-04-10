@@ -1,5 +1,5 @@
 ﻿import axios from 'axios';
-import { FETCH_REPORTS, FETCH_REPORT } from './types';
+import { FETCH_REPORTS, FETCH_REPORT, DELETE_REPORT } from './types';
 
 export const fetchReports = () => async dispatch => {
   const res = await axios.get('/api/reports');
@@ -22,4 +22,10 @@ export const submitReport = (values, history, id) => async dispatch => {
     history.push('/reports');
   }
   dispatch({ type: FETCH_REPORT, payload: res.data });
+};
+
+export const deleteReport = (history, id) => async dispatch => {
+  const res = await axios.delete('/api/reports/' + id);
+  history.push('/reports');
+  dispatch({ type: DELETE_REPORT, payload: res.data });
 };
